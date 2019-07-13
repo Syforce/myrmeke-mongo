@@ -1,6 +1,6 @@
 {
 	"name": "myrmeke-mongo",
-	"version": "0.0.1",
+	"version": "0.0.7",
 	"description": "Myrmeke Mongo is the base for a standard usage of the Mongo database",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -13,9 +13,10 @@
 	},
 	"dependencies": {
 		"mongoose": "^5.6.4",
-		"myrmeke-colony": "0.0.10"
+		"myrmeke-colony": "0.0.17"
 	},
 	"devDependencies": {
+		"@types/mongoose": "^5.5.8",
 		"typescript": "^3.5.3"
 	}
 }
