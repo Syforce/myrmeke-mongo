@@ -1,0 +1,21 @@
+{
+	"name": "myrmeke-mongo",
+	"version": "0.0.1",
+	"description": "Myrmeke Mongo is the base for a standard usage of the Mongo database",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"private": false,
+	"repository": {},
+	"author": "Syforce Lightningstorm",
+	"license": "ISC",
+	"scripts": {
+		"build": "tsc"
+	},
+	"dependencies": {
+		"mongoose": "^5.6.4",
+		"myrmeke-colony": "0.0.10"
+	},
+	"devDependencies": {
+		"typescript": "^3.5.3"
+	}
+}
