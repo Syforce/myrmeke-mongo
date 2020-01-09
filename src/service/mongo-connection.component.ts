@@ -5,7 +5,7 @@ function callAlgorithm(connectionConfig: ConnectionConfig): Promise<any> {
 	const promise: Promise<any> = new Promise((resolve: Function, reject: Function) => {
 		const mongooseInstance: Mongoose = new Mongoose();
 
-		mongooseInstance.createConnection(`mongodb://${connectionConfig.host}/${connectionConfig.host}`, {
+		mongooseInstance.createConnection(`mongodb://${connectionConfig.host}/${connectionConfig.database}`, {
 			useNewUrlParser: true
 		}).then((connection: Connection) => {
 			console.log('MongoDB connection succeded');

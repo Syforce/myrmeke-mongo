@@ -4,18 +4,21 @@ import { AbstractDatastore, IDatastore, DatastoreService, ConnectionType, Dynami
 
 import { MongoSchemaService } from '../service/mongo-schema.service';
 
-export class MongoDatastore<T> extends AbstractDatastore<Connection> implements IDatastore<T> {
+export class MongoDatastore<T> extends AbstractDatastore<any> implements IDatastore<T> {
 	private model: Model<any>;
 
+	private static readonly schema: MongoSchemaService = new MongoSchemaService();
+
 	constructor(config: SchemaConfig) {
-		super(config, new MongoSchemaService());
+		super(ConnectionType.MONGO_DB, config, MongoDatastore.schema);
 	}
 
 	/**
 	 * Start creating the model when the connection is created.
 	 */
-	protected init(): void {
+	public init(connection: DynamicConnection<any>): void {
 		const schema: Schema = this.schemaService.generate(this.config);
+		this.connection = connection;
 		this.model = this.connection.getConnection().model(this.config.name, schema);
 
 		console.log(`Registered datastore ${this.config.name}`);
@@ -43,7 +46,7 @@ export class MongoDatastore<T> extends AbstractDatastore<Connection> implements 
 	/**
 	 * Get a Model of type T by it's id.
 	 */
-	public getById(id: string | T): Promise<T> {
+	public getById(id: number | T): Promise<T> {
 		const query: DocumentQuery<any, any, any> = this.model.findById(id);
 
 		return this.observe(query);
@@ -119,6 +122,20 @@ export class MongoDatastore<T> extends AbstractDatastore<Connection> implements 
 				$in: ids
 			}
 		});
+
+		return this.observe(query);
+	}
+
+	public update(): Promise<any> {
+		return null;
+	}
+
+	public delete(): Promise<any> {
+		return null;
+	}
+
+	public deleteAll(): Promise<Array<T>> {
+		const query: DocumentQuery<any, any, any> = this.model.remove({});
 
 		return this.observe(query);
 	}
