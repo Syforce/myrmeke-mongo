@@ -1,4 +1,4 @@
-export { SchemaConfig, SchemaFieldType, DatastoreService, datastoreService, ConnectionType } from 'myrmeke-colony';
+export { SchemaConfig, SchemaFieldType, DatastoreService, datastoreService, ConnectionType, Connection } from 'myrmeke-colony';
 
 export { MongoDatastore } from './instance/mongo.datastore';
 export { MongoSchemaService } from './service/mongo-schema.service';
