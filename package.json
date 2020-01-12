@@ -1,6 +1,6 @@
 {
 	"name": "myrmeke-mongo",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"description": "Myrmeke Mongo is the base for a standard usage of the Mongo database",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
