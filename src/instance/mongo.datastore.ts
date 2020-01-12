@@ -19,7 +19,12 @@ export class MongoDatastore<T> extends AbstractDatastore<any> implements IDatast
 	public init(connection: DynamicConnection<any>): void {
 		const schema: Schema = this.schemaService.generate(this.config);
 		this.connection = connection;
-		this.model = this.connection.getConnection().model(this.config.name, schema);
+
+		if (this.config.extends) {
+			this.model = this.connection.getConnection().models[this.config.extends].discriminator(this.config.name, schema);
+		} else {
+			this.model = this.connection.getConnection().model(this.config.name, schema);
+		}
 
 		console.log(`Registered datastore ${this.config.name}`);
 	}
