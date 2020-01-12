@@ -131,8 +131,12 @@ export class MongoDatastore<T> extends AbstractDatastore<any> implements IDatast
 		return this.observe(query);
 	}
 
-	public update(): Promise<any> {
-		return null;
+	public update(model: T): Promise<any> {
+		// const query: Promise<T> = model.save();
+
+		// return this.observe(query);
+
+		return (model as any).save();
 	}
 
 	public delete(): Promise<any> {

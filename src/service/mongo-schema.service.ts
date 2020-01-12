@@ -20,6 +20,9 @@ export class MongoSchemaService implements ISchemaService {
 			case SchemaFieldType.INTEGER: {
 				return Schema.Types.Number;
 			}
+			case SchemaFieldType.ARRAY: {
+				return Schema.Types.Array;
+			}
 		}
 
 		return null;
